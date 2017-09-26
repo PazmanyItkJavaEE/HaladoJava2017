@@ -39,18 +39,4 @@ public class ProductStatelessService implements Serializable, ProductStatelessSe
 
 
 
-	@Override
-	public void addProduct(String name, Double prize) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-
-	@Override
-	public List<Product> getProducts() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
