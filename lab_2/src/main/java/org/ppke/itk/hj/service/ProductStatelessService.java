@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
+@Stateless
 public class ProductStatelessService implements Serializable, ProductStatelessServiceLocal {
 
 	private static final long serialVersionUID = -1L;
@@ -39,4 +39,18 @@ public class ProductStatelessService implements Serializable, ProductStatelessSe
 
 
 
+	@Override
+	public void addProduct(String name, Double prize) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+	@Override
+	public List<Product> getProducts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
