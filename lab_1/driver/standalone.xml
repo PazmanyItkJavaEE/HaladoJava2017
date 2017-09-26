@@ -1,0 +1,18 @@
+<subsystem xmlns="urn:jboss:domain:datasources:3.0">
+    <datasources>
+        <datasource jndi-name="java:/laborDS" pool-name="laborDS" enabled="true" use-java-context="true">
+            <connection-url>jdbc:postgresql://hj14.modit.hu:25432/hj17</connection-url>
+            <driver>postgres</driver>
+            <security>
+                <user-name>hj14</user-name>
+                <password>Rooh8oophiej</password>
+            </security>
+        </datasource>
+        <drivers>
+            <driver name="postgres" module="org.postgresql">
+                <driver-class>org.postgresql.Driver</driver-class>
+            </driver>
+        </drivers>
+    </datasources>
+</subsystem>
+   

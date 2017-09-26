@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+
+
+	<ui:param name="pageTitle" value="Termékek listája"/>
+
+	<ui:define name="header">
+		Termékek
+	</ui:define>
+
+	<ui:define name="subheader">
+		Termékek listázása
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+									
+						<h:messages globalOnly="true" styleClass="error"/>
+
+							<h:panelGrid columnClasses="label,component,required" columns="3">
+							<h:outputLabel for="productBeanProductProductName" value="Termék neve:"/>
+							<h:panelGroup>
+							<h:inputText id="productBeanProductProductName" required="true" value="#{productBean.product.productName}"/>
+							<h:message for="productBeanProductProductName" styleClass="error"/>
+							</h:panelGroup>
+							<h:outputText value="*"/>
+							<h:outputLabel for="productBeanProductPrice" value="Termék ára:"/>
+							<h:panelGroup>
+							<h:inputText id="productBeanProductPrice" required="true" value="#{productBean.product.price}"/>
+							<h:message for="productBeanProductPrice" styleClass="error"/>
+							</h:panelGroup>
+							<h:outputText value="*"/>
+				
+						</h:panelGrid>
+
+						<div class="buttons">
+								<h:commandButton value="Mentés stateful beannel" action='#{productBean.addStateful}' styleClass="btn btn-primary"/>
+								<h:commandButton value="Mentés stateless beannel" action='#{productBean.addStateless}' styleClass="btn btn-primary"/>
+						</div>
+		
+				</h:panelGroup>
+			</f:validateBean>
+			<h2>
+				Stateful
+			</h2>
+			<h:dataTable id="productBeanPageItems" styleClass="data-table" value="#{productBean.productListStateful}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Termék neve"/>
+					</f:facet>
+					<h:link outcome="/gyak_3/product/view">
+						<f:param name="name" value="#{_item.productName}"/>
+						<h:outputText id="itemProductName" value="#{_item.productName}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Termék ára"/>
+					</f:facet>
+					<h:link outcome="/gyak_3/product/view">
+						<f:param name="name" value="#{_item.productName}"/>
+						<h:outputText id="itemPrice" value="#{_item.price}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			
+			<h2>
+				Stateless
+			</h2>
+			<h:dataTable id="productBeanPageItems2" styleClass="data-table" value="#{productBean.productListStateless}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Termék neve"/>
+					</f:facet>
+					<h:link outcome="/gyak_3/product/view">
+						<f:param name="name" value="#{_item.productName}"/>
+						<h:outputText id="itemProductName" value="#{_item.productName}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Termék ára"/>
+					</f:facet>
+					<h:link outcome="/gyak_3/product/view">
+						<f:param name="name" value="#{_item.productName}"/>
+						<h:outputText id="itemPrice" value="#{_item.price}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>
