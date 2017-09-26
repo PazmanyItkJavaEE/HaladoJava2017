@@ -30,7 +30,8 @@ public final class ViewUtils {
 		}
 
 		try {
-			// Invoke toString if declared in the class. If not found, the NoSuchMethodException is caught and handled
+			// Invoke toString if declared in the class. If not found, the
+			// NoSuchMethodException is caught and handled
 			object.getClass().getDeclaredMethod("toString");
 			return object.toString();
 		} catch (NoSuchMethodException noMethodEx) {
@@ -39,11 +40,9 @@ public final class ViewUtils {
 					// Find the primary key field and display it
 					if (field.getAnnotation(Id.class) != null) {
 						// Find a matching getter and invoke it to display the key
-						for (Method method : object.getClass()
-								.getDeclaredMethods()) {
-							if (method.equals(new PropertyDescriptor(field
-									.getName(), object.getClass())
-									.getReadMethod())) {
+						for (Method method : object.getClass().getDeclaredMethods()) {
+							if (method.equals(
+									new PropertyDescriptor(field.getName(), object.getClass()).getReadMethod())) {
 								return method.invoke(object).toString();
 							}
 						}
