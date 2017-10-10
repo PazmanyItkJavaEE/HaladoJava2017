@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+	<f:event listener="#{orderBean.fillOrders}" type="preRenderView" />
+
+
+
+	<ui:param name="pageTitle" value="Termékek listája"/>
+
+	<ui:define name="header">
+		Megrendelések
+	</ui:define>
+
+	<ui:define name="subheader">
+		Új termék felvétele
+	</ui:define>
+
+
+	<ui:define name="main">
+		<h:form id="search">
+			
+			<h2>
+				Eddigi megrendelések áttekintése
+			</h2>
+			<h:dataTable id="orderBeanPageItems" styleClass="data-table" value="#{orderBean.orders}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Vásárló neve"/>
+					</f:facet>
+
+						<h:outputText id="customerName" value="#{_item.customer.lastname} #{_item.customer.firstname}"/>
+
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Vásárolt termékek"/>
+					</f:facet>
+						<h:outputText id="orders" value="#{orderBean.getProductsStringRepresentation(_item)}"/>
+
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

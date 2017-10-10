@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+
+
+	<ui:param name="pageTitle" value="Termékek listája"/>
+
+	<ui:define name="header">
+		Termékek
+	</ui:define>
+
+	<ui:define name="subheader">
+		Új termék felvétele
+	</ui:define>
+
+
+	<ui:define name="main">
+		<h:form id="search">
+
+						<div class="buttons">
+								<h:commandButton value="Új termék hozzáadása" action='#{productBean.create}' styleClass="btn btn-primary"/>
+						</div>
+			
+			
+			<h2>
+				Termékek szerkesztése
+			</h2>
+			<h:dataTable id="productBeanPageItems2" styleClass="data-table" value="#{productBean.products}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Termék neve"/>
+					</f:facet>
+
+						<f:param name="name" value="#{_item.productName}"/>
+						<h:outputText id="itemProductName_sl" value="#{_item.productName}"/>
+
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Termék ára"/>
+					</f:facet>
+
+						<f:param name="name" value="#{_item.productName}"/>
+						<h:outputText id="itemPrice_sl" value="#{_item.price}"/>
+
+				</h:column>
+				
+				<h:column>
+					<h:commandButton value="Törlés" action='#{productBean.removeProduct(_item)}' styleClass="btn btn-primary"/>
+				</h:column>
+				
+				<h:column>
+					<h:commandButton value="Szerkesztés" action='#{productBean.edit(_item.id,_item.productName, _item.price)}' styleClass="btn btn-primary"/>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>
