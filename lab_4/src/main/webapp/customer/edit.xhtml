@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+
+
+	<ui:param name="pageTitle" value="Felhasználó szerkesztése"/>
+
+	<ui:define name="header">
+		Felhasználók
+	</ui:define>
+
+	<ui:define name="subheader">
+		Felhasználó szerkesztése
+	</ui:define>
+
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+									
+						<h:messages globalOnly="true" styleClass="error"/>
+
+							<h:panelGrid columnClasses="label,component,required" columns="3">
+							<h:outputLabel for="userName" value="Felhasználó neve:"/>
+							<h:panelGroup>
+							<h:inputText id="userName" required="true" value="#{customerBean.username}"/>
+							<h:message for="userName" styleClass="error"/>
+							</h:panelGroup>
+							<h:outputText value="*"/>
+							
+							<h:outputLabel for="lastName" value="Vezetéknév:"/>
+							<h:panelGroup>
+							<h:inputText id="lastName" required="true" value="#{customerBean.lastName}"/>
+							<h:message for="lastName" styleClass="error"/>
+							</h:panelGroup>
+							<h:outputText value="*"/>
+							
+							<h:outputLabel for="firstName" value="Keresztnév:"/>
+							<h:panelGroup>
+							<h:inputText id="firstName" required="true" value="#{customerBean.firstName}"/>
+							<h:message for="firstName" styleClass="error"/>
+							</h:panelGroup>
+							<h:outputText value="*"/>
+							
+							<h:outputLabel for="role" value="Szerepkör:"/>
+							<h:panelGroup>
+							<h:selectOneMenu id="role" required="true" value="#{customerBean.role}">
+								<f:selectItem itemValue="ADMIN" itemLabel="ADMIN" />
+							</h:selectOneMenu>
+							<h:message for="role" styleClass="error"/>
+							</h:panelGroup>
+							<h:outputText value="*"/>
+							
+				
+						</h:panelGrid>
+
+						<div class="buttons">
+								<h:commandButton value="Felhasználó módositása"  styleClass="btn btn-primary"/> </div> </h:panelGroup>
+			</f:validateBean>
+			
+			
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

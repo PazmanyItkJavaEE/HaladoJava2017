@@ -11,6 +11,7 @@ import javax.persistence.TypedQuery;
 import org.ppke.itk.hj.interfaces.ProductServiceLocal;
 import org.ppke.itk.hj.model.Product;
 
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,24 +41,21 @@ public class ProductService implements Serializable, ProductServiceLocal {
 
 	@Override
 	public void removeProduct(Product product) {
-		product = entityManager.merge(product);
-		entityManager.remove(product);
+		entityManager.remove(entityManager.find(Product.class,product.getId()));
+		
 		
 	}
 
 	@Override
 	public void updateProduct(Integer id, String name, Double price) {
-		Product product = new Product();
-		product.setId(id);
-		product.setProductName(name);
-		product.setPrice(price);
-		entityManager.merge(product);
 		
-	}
+		Product product = new Product(id, name, price);
+		entityManager.merge(product);
+}
 
 	@Override
 	public List<Product> getProducts() {
-		TypedQuery<Product> query = entityManager.createQuery("SELECT p FROM Product p", Product.class);
+		TypedQuery<Product> query = entityManager.createNamedQuery(Product.getAllProducts, Product.class);
 		return query.getResultList();
 	}
 

@@ -11,7 +11,7 @@ import org.ppke.itk.hj.model.Product;
 public interface OrderServiceLocal {
 	
 	public void addOrder(String userName,String firstName, String lastName, List<Product> products); 
-	public List<Order> getOrders();
-	List<Order> getOrders(String username);
+	public List<Order> getOrders(String userName);
+	List<Order> getOrders();
 
 }

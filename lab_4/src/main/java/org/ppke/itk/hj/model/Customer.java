@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,19 +32,22 @@ public class Customer implements java.io.Serializable {
 	@Column(name = "uid", unique = true, nullable = false)
 	private Integer id;
 	
-	@Column
+	@Column(name="username")
 	private String username;
 	
-	@Column
+	@Column(name="firstname")
 	private String firstname;
 	
-	@Column
+	@Column(name="lastname")
 	private String lastname;
 	
-	@Column
+	@Column(name="password")
 	private String password;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy ="customer")
+	@Column(name="role")
+	private String role;
+	
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="customer")
 	private Set<Order> orders = new HashSet<>();
 
 	public Customer() {
@@ -117,6 +121,14 @@ public class Customer implements java.io.Serializable {
 
 	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }

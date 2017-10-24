@@ -14,9 +14,17 @@ public class CustomerService implements CustomerServiceLocal {
 	
 
 	
+	@PersistenceContext
+	private EntityManager entityManager;
+	
 	@Override
 	public Customer addCustomer(String username, String lastname, String firstname) {
-		return null;
+		Customer customer = new Customer();
+		customer.setFirstname(firstname);
+		customer.setLastname(lastname);
+		customer.setUsername(username);
+		entityManager.persist(customer);
+		return customer;
 	}
 
 	@Override

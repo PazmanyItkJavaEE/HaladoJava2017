@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.0" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-<display-name>lab_3</display-name>
-
+<display-name>gyak_7</display-name>
   <session-config>
   <session-timeout>30</session-timeout>
   </session-config>
-  <servlet>
-    <servlet-name>Faces Servlet</servlet-name>
-    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Faces Servlet</servlet-name>
-    <url-pattern>/faces/*</url-pattern>
-  </servlet-mapping>
+
+
   <mime-mapping>
   <extension>ico</extension>
     <mime-type>image/x-icon</mime-type>
@@ -30,4 +22,5 @@
     <error-code>500</error-code>
     <location>/faces/error.xhtml</location>
   </error-page>
+
 </web-app>
