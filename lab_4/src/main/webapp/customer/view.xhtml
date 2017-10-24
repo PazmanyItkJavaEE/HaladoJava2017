@@ -5,7 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/resources/templates/pageTemplate.xhtml">
-	<f:event listener="#{customerBean.customers}" type="preRenderView" />
+	<f:event listener="#{customerBean.reloadCustomers}" type="preRenderView" />
 
 
 
