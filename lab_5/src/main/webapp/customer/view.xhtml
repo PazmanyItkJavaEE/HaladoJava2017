@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/templates/pageTemplate.xhtml">
+	<f:event listener="#{customerBean.reloadCustomers}" type="preRenderView" />
+
+
+
+	<ui:param name="pageTitle" value="Termékek listája"/>
+
+	<ui:define name="header">
+		Felhasználók
+	</ui:define>
+
+	<ui:define name="main">
+		<h:form id="search">
+            <div class="buttons">
+				<h:commandButton value="Új felhasználó hozzáadása" action='#{customerBean.create}' styleClass="btn btn-primary"/>
+		  </div>
+			
+			
+			<h2>
+				Felhasználók megtekintése
+			</h2>
+			<h:dataTable id="customerList" styleClass="data-table" value="#{customerBean.customers}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Felhasználónév"/>
+					</f:facet>
+
+						<h:outputText id="username" value="#{_item.username}"/>
+
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Vezetéknév"/>
+					</f:facet>
+
+						<h:outputText id="lastname" value="#{_item.lastname}"/>
+
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Keresztnév"/>
+					</f:facet>
+
+						<h:outputText id="firstname" value="#{_item.firstname}"/>
+
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Szerepkör"/>
+					</f:facet>
+
+						<h:outputText id="role" value="#{_item.role}"/>
+
+				</h:column>
+				
+				
+				
+				<h:column>
+					<h:commandButton value="Szerkesztés" action='#{customerBean.edit(_item.id,_item.username, _item.lastname,_item.firstname,_item.role,_item.password)}' styleClass="btn btn-primary"/>
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>
