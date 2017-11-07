@@ -49,10 +49,20 @@
 							</h:panelGroup>
 							<h:outputText value="*"/>
 							
+							<h:outputLabel for="password" value="Jelszó:"/>
+							<h:panelGroup>
+							<h:inputSecret id="password" required="true" value="#{customerBean.password}"/>
+							<h:message for="password" styleClass="error"/>
+							</h:panelGroup>
+							<h:outputText value="*"/>
+							
+							
 							<h:outputLabel for="role" value="Szerepkör:"/>
 							<h:panelGroup>
 							<h:selectOneMenu id="role" required="true" value="#{customerBean.role}">
-								<f:selectItem itemValue="ADMIN" itemLabel="ADMIN" />
+							<f:selectItem itemValue="ADMIN" itemLabel="ADMIN" />
+							<f:selectItem itemValue="GUEST" itemLabel="GUEST" />
+							<f:selectItem itemValue="CUSTOMER" itemLabel="CUSTOMER" />
 							</h:selectOneMenu>
 							<h:message for="role" styleClass="error"/>
 							</h:panelGroup>
@@ -62,7 +72,7 @@
 						</h:panelGrid>
 
 						<div class="buttons">
-								<h:commandButton value="Felhasználó módositása"  styleClass="btn btn-primary"/> </div> </h:panelGroup>
+								<h:commandButton value="Felhasználó módositása" action="#{customerBean.updateCustomer}"   styleClass="btn btn-primary"/> </div> </h:panelGroup>
 			</f:validateBean>
 			
 			

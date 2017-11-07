@@ -20,7 +20,7 @@
 							<h:outputLabel for="userName" value="Felhasználó neve:"/>
 							<h:panelGroup>
 							<h:inputText id="userName"  value="#{cc.attrs.userName}" >
-							
+							<f:validateRequired></f:validateRequired>
 							</h:inputText>
 							<h:message for="userName" styleClass="error"/>
 							</h:panelGroup>
@@ -53,8 +53,10 @@
 							<h:outputLabel for="password" value="Jelszó:"/>
 							<h:panelGroup>
 							<h:inputSecret id="password"  value="#{cc.attrs.password}">
+							<f:validator validatorId="passwordValidator"></f:validator>
 							</h:inputSecret>
-						
+							
+							<h:message for="password" styleClass="error"/>
 							</h:panelGroup>
 							<h:outputText value="*"/>
 				

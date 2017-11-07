@@ -4,6 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:mycomponents="http://xmlns.jcp.org/jsf/composite/mycomponents"
 	template="/resources/templates/pageTemplate.xhtml">
 
 
@@ -24,43 +25,16 @@
 			<f:validateBean disabled="true">
 				<h:panelGroup styleClass="search">
 
-									
-						<h:messages globalOnly="true" styleClass="error"/>
-
-							<h:panelGrid columnClasses="label,component,required" columns="3">
-							<h:outputLabel for="userName" value="Felhasználó neve:"/>
-							<h:panelGroup>
-							<h:inputText id="userName" required="true" value="#{customerBean.username}"/>
-							<h:message for="userName" styleClass="error"/>
-							</h:panelGroup>
-							<h:outputText value="*"/>
-							<h:outputLabel for="lastName" value="Vezetéknév:"/>
-							<h:panelGroup>
-							<h:inputText id="lastName" required="true" value="#{customerBean.lastName}"/>
-							<h:message for="lastName" styleClass="error"/>
-							</h:panelGroup>
-							<h:outputText value="*"/>
-							
-							<h:outputLabel for="firstName" value="Keresztnév:"/>
-							<h:panelGroup>
-							<h:inputText id="firstName" required="true" value="#{customerBean.firstName}"/>
-							<h:message for="firstName" styleClass="error"/>
-							</h:panelGroup>
-							<h:outputText value="*"/>
-							
-							<h:outputLabel for="role" value="Szerepkör:"/>
-							<h:panelGroup>
-							<h:selectOneMenu id="role" required="true" value="#{customerBean.role}">
-							<f:selectItem itemValue="ADMIN" itemLabel="ADMIN" />
-							</h:selectOneMenu>
-							<h:message for="role" styleClass="error"/>
-							</h:panelGroup>
-							<h:outputText value="*"/>
-				
-						</h:panelGrid>
+					<mycomponents:editCustomerComp 
+					          password="#{customerBean.password}"
+					          userName="#{customerBean.username}"
+					          lastName="#{customerBean.lastName}"
+					          firstName="#{customerBean.firstName}"
+					          role="#{customerBean.role}">
+					</mycomponents:editCustomerComp>
 
 						<div class="buttons">
-								<h:commandButton value="Felhasználó létrehozása"  styleClass="btn btn-primary"/> 
+								<h:commandButton value="Felhasználó létrehozása" action="#{customerBean.addCustomer}" styleClass="btn btn-primary"/> 
 						</div>
 		
 				</h:panelGroup>
